@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه کلاسی من  </title>
+    <link rel="stylesheet" href="./stayle.css">
+    <link rel="stylesheet" href="./manifast.json">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>سلام 👋</h1>
+            <h2>برنامه کلاسی </h2>
+        </header>
+
+        <section class="today">
+            <p>امروز</p>
+            <h2 id="todayDay"></h2>
+            <span id="todayDate"></span>
+        </section>
+        <!-- <section class="next-class">
+            <p>📚کلاس بعدی</p>
+            <h3 id="nextClassName">در حال بررسی...</h3>
+            <p id="nextClassTime"></p>
+            <!-- <p id="nextClasscountdown"></p> -->
+        <!-- </section> --> 
+
+        <main>
+         <section class="day-section">
+            <h2>شنبه</h2>
+
+            <div class="class-card">
+            <div class="class-icon">🧠</div>
+            <div class="class-info">
+                <p>مبانی هوش محاسباتی </p>
+                <p>11:00 - 13:00</p>
+                <p class="alternate-time even-week"> 10:45 - 11:00<span class="week-label">هفته زوج</span></p>    
+                <span ></span>
+            </div>
+            </div>
+            <div class="class-card">
+            <div class="class-icon">💻</div>
+            <div class="class-info">
+                <p>ریزپردازنده و زبان اسمبلی</p>
+                <p>15:00 - 17:00</p>
+                <p class="alternate-time odd-week">17:00 - 18:00<span class="week-label">هفته فرد</span></p>
+                <span></span>
+            </div>
+        </div>
+    
+
+        </section>
+        <section class="day-section">
+            <h2>یکشنبه</h2>
+            <div class="class-card">
+                <div class="class-icon">📐</div>
+                <div class="class-info">
+                    <p>ریاضی پایه </p>
+                    <p>8:00 - 10:00</p>
+                </div>
+                </div>
+            <div class="class-card">
+                <div class="class-icon">📟</div>
+                <div class="class-info">
+                    <p>شبکه های کامپیوتری</p>
+                    <p>13:00 - 15:00</p>
+                    <p class="alternate-time even-week">12:15 - 13:00<span class="week-label">هفته زوج</span></p>
+                </div>
+                </div>
+            <div class="class-card">
+                <div class="class-icon">🎰</div>
+                <div class="class-info">
+                    <p>ریاضیات مهندسی</p>
+                    <p>15:00 - 17:00</p>
+                    <p class="alternate-time odd-week">17:00 - 18:00<span class="week-label">هفته فرد</span></p>
+                </div>
+                </div>
+            <div class="class-card">
+                <div class="class-icon">📡</div>
+                <div class="class-info">
+                    <p>مهندسی اینترنت </p>
+                    <p>18:00 - 20:00</p>
+                </div>    
+            </div>
+        </section>
+        <section class="day-section">
+            <h2>دوشنبه</h2>
+            <div class="class-card">
+                <div class="class-info">
+                    <p>آزادی</p>
+                </div>
+            </div>
+        </section>
+        <section class="day-section">
+            <h2>سه شنبه</h2>
+            <div class="class-card">
+                <div class="class-info">
+                    <p>آزادی</p>
+                    </div>
+            </div>
+        </section>
+        <section class="day-section">
+            <h2>چهارشنبه</h2>
+            <div class="class-card">
+                <div class="class-icon">⌨</div>
+                <div class="class-info">
+                    <p>مهندسی نرم افزار </p>
+                    <p>13:00 - 15:00</p>
+                    <p class="alternate-time odd-week">15:00 - 16:00</p>
+                </div>
+            </div>
+        </section>
+
+        </main>
+        <main>
+        <div id="calender" class="calender">
+            <h2>برنامه هفتگی📆</h2>
+            <div class="days">
+                <button class="day-btn">شنبه</button>
+                <button class="day-btn">یکشنبه</button>
+                <button class="day-btn">دوشنبه</button>
+                <button class="day-btn">سه شنبه </button>
+                <button class="day-btn">چهارشنبه</button>
+                 
+            </div>
+        </div>
+        </main>
+
+        <nav>
+            <button>🏠</button>
+            <button id="calenderBtn">📆</button>
+            <button>⚙</button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
