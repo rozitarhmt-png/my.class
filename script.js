@@ -117,20 +117,3 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
-const notificationBtn = document.getElementById("notificationBtn");
-notificationBtn.addEventListener("click", async function () {
-    if (!("Notification" in window)) {
-        alert("این دستگاه از اعلان پشتیبانی نمی‌کند.");
-        return;
-    }
-  const permission = await Notification.requestPermission();
-  alert("وضعیت اعلان: " + permission);
-    if (permission === "granted") {
-        const registration = await navigator.serviceWorker.ready;
-        registration.showNotification("برنامه کلاسی من 📚", {
-            body: "اعلان‌ها با موفقیت فعال شدند! 🔔"
-        });
-    } else {
-        alert("اجازه اعلان داده نشد.");
-    }
-});
