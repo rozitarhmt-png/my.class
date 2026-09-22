@@ -123,7 +123,8 @@ notificationBtn.addEventListener("click", async function () {
         alert("این دستگاه از اعلان پشتیبانی نمی‌کند.");
         return;
     }
-    const permission = await Notification.requestPermission();
+  const permission = await Notification.requestPermission();
+  alert("وضعیت اعلان: " + permission);
     if (permission === "granted") {
         const registration = await navigator.serviceWorker.ready;
         registration.showNotification("برنامه کلاسی من 📚", {
