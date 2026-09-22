@@ -117,65 +117,42 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
-const nextClassBox = document.querySelector(".next-class");
-const nextClassName = document.getElementById("nextClassName");
-const nextClassTime = document.getElementById("nextClassTime");
-function updateNextClass() {
-    const now = new Date();
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-    const todaySection = daysection[todayIndax];
-    if (!todaySection) {
-        nextClassBox.style.display = "none";
-        return;
+const evenWeekBtn = document.getElementById("evenWeekBtn");
+const oddWeekBtn = document.getElementById("oddWeekBtn");
+const currentWeekText = document.getElementById("currentWeekText");
+
+function setWeek(isEven) {
+
+   function setWeek(isEven) {
+
+    if (isEven) {
+
+        document.querySelectorAll(".even-week").forEach(function(item) {
+            item.style.display = "block";
+        });
+
+        document.querySelectorAll(".odd-week").forEach(function(item) {
+            item.style.display = "none";
+        });
+
+        currentWeekText.textContent = "هفته زوج";
+
+        evenWeekBtn.classList.add("active");
+        oddWeekBtn.classList.remove("active");
+
+    } else {
+
+        document.querySelectorAll(".even-week").forEach(function(item) {
+            item.style.display = "none";
+        });
+
+        document.querySelectorAll(".odd-week").forEach(function(item) {
+            item.style.display = "block";
+        });
+
+        currentWeekText.textContent = "هفته فرد";
+
+        oddWeekBtn.classList.add("active");
+        evenWeekBtn.classList.remove("active");
     }
-    const cards = todaySection.querySelectorAll(".class-card");
-    let foundClass = false;
-    cards.forEach(function(card) {
-        if (foundClass) return;
-        const texts = card.querySelectorAll(".class-info p");
-        if (texts.length < 2) return;
-        const className = texts[0].textContent.trim();
-        if (className === "آزادی") return;
-        for (let i = 1; i < texts.length; i++) {
-            // زمان‌هایی که در هفته فعلی مخفی هستند را رد کن
-            if (texts[i].style.display === "none") {
-                continue;
-            }
-            const timeText = texts[i].textContent.trim();
-            const match = timeText.match(
-                /(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/
-            );
-            if (!match) continue;
-            const startMinutes =
-                Number(match[1]) * 60 + Number(match[2]);
-            const endMinutes =
-                Number(match[3]) * 60 + Number(match[4]);
-            // اگر الان داخل کلاس هستیم
-            if (
-                currentMinutes >= startMinutes &&
-                currentMinutes < endMinutes
-            ) {
-                nextClassName.textContent = "🟢 " + className;
-                nextClassTime.textContent =
-                    "در حال برگزاری تا " +
-                    match[3] + ":" + match[4];
-                foundClass = true;
-                return;
-            }
-            // اگر کلاس هنوز شروع نشده
-            if (currentMinutes < startMinutes) {
-                nextClassName.textContent = className;
-                nextClassTime.textContent =
-                    "⏰ " + timeText;
-                foundClass = true;
-                return;
-            }
-        }
-    });
-    if (!foundClass) {
-        nextClassName.textContent = "امروز کلاس دیگه‌ای نداری 🎉";
-        nextClassTime.textContent = "";
-    }
-    nextClassBox.style.display = "block";
 }
-updateNextClass();
