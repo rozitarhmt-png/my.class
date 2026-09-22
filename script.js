@@ -121,8 +121,6 @@ const evenWeekBtn = document.getElementById("evenWeekBtn");
 const oddWeekBtn = document.getElementById("oddWeekBtn");
 const currentWeekText = document.getElementById("currentWeekText");
 
-function setWeek(isEven) {
-
    function setWeek(isEven) {
 
     if (isEven) {
