@@ -117,11 +117,6 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
-if ("Notification" in window) {
-    Notification.requestPermission().then(function(permission) {
-        console.log("وضعیت Notification:", permission);
-    });
-}
 const notificationBtn = document.getElementById("notificationBtn");
 notificationBtn.addEventListener("click", async function () {
     if (!("Notification" in window)) {
@@ -129,9 +124,9 @@ notificationBtn.addEventListener("click", async function () {
         return;
     }
     const permission = await Notification.requestPermission();
-
     if (permission === "granted") {
-        new Notification("برنامه کلاسی من 📚", {
+        const registration = await navigator.serviceWorker.ready;
+        registration.showNotification("برنامه کلاسی من 📚", {
             body: "اعلان‌ها با موفقیت فعال شدند! 🔔"
         });
     } else {
