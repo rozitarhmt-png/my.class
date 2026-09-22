@@ -122,20 +122,19 @@ if ("Notification" in window) {
         console.log("وضعیت Notification:", permission);
     });
 }
-const todaySection = daysection[todayIndax];
+const notificationBtn = document.getElementById("notificationBtn");
+notificationBtn.addEventListener("click", async function () {
+    if (!("Notification" in window)) {
+        alert("این دستگاه از اعلان پشتیبانی نمی‌کند.");
+        return;
+    }
+    const permission = await Notification.requestPermission();
 
-if (todaySection) {
-    const todayCards = todaySection.querySelectorAll(".class-card");
-
-    todayCards.forEach(function(card) {
-        const texts = card.querySelectorAll(".class-info p");
-
-        if (texts.length === 0) return;
-
-        const name = texts[0].textContent.trim();
-
-        if (name !== "آزادی") {
-            console.log("کلاس امروز:", name);
-        }
-    });
-}
+    if (permission === "granted") {
+        new Notification("برنامه کلاسی من 📚", {
+            body: "اعلان‌ها با موفقیت فعال شدند! 🔔"
+        });
+    } else {
+        alert("اجازه اعلان داده نشد.");
+    }
+});
