@@ -14,11 +14,13 @@ calenderBtn.addEventListener("click",function(){
         calender.style.display ="block";
         //برنامه کلاس ها مخفی میشه 
         main.style.display = "none";
+        
     }else{
         // تقویم بسته شده 
         calender.style.display = "none";
         // برنامه کلاس ها برگردد
         main.style.display = "block";
+    
     }
 });
 // انتخاب روز 
@@ -28,6 +30,7 @@ daybuttons.forEach(function(button,indax){
         calender.style.display = "none";
         // برنامه نمایش داده شود 
         main.style.display ="block";
+    
         // همه روزا مخفی شوند
         daysection.forEach(function(section){
             section.style.display = "none";
@@ -38,6 +41,10 @@ daybuttons.forEach(function(button,indax){
             btn.classList.remove("active");
         });
         button.classList.add("active");
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
     });
    
 });
@@ -56,13 +63,15 @@ if (today === 6){
 }else if ( today === 3){
     todayIndax = 4;
 }
+//همه روزهامخفی شوند
 daysection.forEach(function(section){
     section.style.display = "none";
 });
+//نمایش روز جاری
 if (todayIndax !== undefined){
     daysection[todayIndax].style.display = "block";
 }
-
+//تاریخ امروز
 const todayDate = new Date();
 const weekDays = [
     "یکشنبه",
@@ -79,33 +88,7 @@ todayDateText.textContent = todayDate.toLocaleDateString("fa-IR",{
     month: "long",
     day : "numeric"
 });
-
-const thisWeekIsEven = true;
-
-const evenWeekTimes = document.querySelectorAll(".even-week");
-const oddWeekTimes = document.querySelectorAll(".odd-week");
-
-if (thisWeekIsEven) {
-
-    evenWeekTimes.forEach(function(time) {
-        time.style.display = "block";
-    });
-
-    oddWeekTimes.forEach(function(time) {
-        time.style.display = "none";
-    });
-
-} else {
-
-    evenWeekTimes.forEach(function(time) {
-        time.style.display = "none";
-    });
-
-    oddWeekTimes.forEach(function(time) {
-        time.style.display = "block";
-    });
-
-}
+//server worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker.register("./sw.js")
@@ -116,41 +99,4 @@ if ("serviceWorker" in navigator) {
                 console.log("خطا در ثبت Service Worker:", error);
             });
     });
-}
-const evenWeekBtn = document.getElementById("evenWeekBtn");
-const oddWeekBtn = document.getElementById("oddWeekBtn");
-const currentWeekText = document.getElementById("currentWeekText");
-
-   function setWeek(isEven) {
-
-    if (isEven) {
-
-        document.querySelectorAll(".even-week").forEach(function(item) {
-            item.style.display = "block";
-        });
-
-        document.querySelectorAll(".odd-week").forEach(function(item) {
-            item.style.display = "none";
-        });
-
-        currentWeekText.textContent = "هفته زوج";
-
-        evenWeekBtn.classList.add("active");
-        oddWeekBtn.classList.remove("active");
-
-    } else {
-
-        document.querySelectorAll(".even-week").forEach(function(item) {
-            item.style.display = "none";
-        });
-
-        document.querySelectorAll(".odd-week").forEach(function(item) {
-            item.style.display = "block";
-        });
-
-        currentWeekText.textContent = "هفته فرد";
-
-        oddWeekBtn.classList.add("active");
-        evenWeekBtn.classList.remove("active");
-    }
 }
